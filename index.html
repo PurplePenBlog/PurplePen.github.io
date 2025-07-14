@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purple Pen - A Blog by... Purple Pen</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Purple Pen</h1>
+            <p>Exploring everything that sparks curiosity.</p>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search posts...">
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <aside class="sidebar">
+            <h2>Tags</h2>
+            <div id="tag-list" class="tag-list">
+                <!-- Tags will be loaded here by JavaScript -->
+            </div>
+        </aside>
+
+        <section class="blog-posts" id="blog-posts">
+            <!-- Blog posts will be loaded here by JavaScript -->
+            <article class="post" data-tags="anime,gaming,review">
+                <h2 class="post-title"><a href="posts/first-post.html">My First Foray into Anime Gaming</a></h2>
+                <p class="post-meta">July 13, 2025 | Tags: <span class="post-tags">anime, gaming, review</span></p>
+                <div class="post-content">
+                    <img src="https://via.placeholder.com/600x300/BB86FC/FFFFFF?text=Anime+Game+Image" alt="Placeholder anime game image" class="post-image">
+                    <p>Welcome to Purple Pen! In this inaugural post, I dive into my recent experience with an anime-inspired game that truly captured my imagination. From its stunning art style to its engaging narrative, there's a lot to unpack...</p>
+                    <a href="posts/first-post.html" class="read-more">Read More</a>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Purple Pen. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

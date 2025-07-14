@@ -1,0 +1,655 @@
+/* General Styles */
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Quicksand:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+    --primary-purple: #A729F5; /* A vibrant, eye-catching purple */
+    --secondary-purple: #6A0DAD; /* A deeper, rich purple for contrast */
+    --accent-pink: #FF6EC7; /* A bright, flashy pink for accents */
+    --text-dark: #333333;
+    --text-light: #FFFFFF;
+    --bg-light: #F0F0F0; /* Slightly off-white for a softer look */
+    --bg-dark: #1A1A1A; /* Dark background for contrast elements */
+    --border-color: #D0D0D0;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.2);
+}
+
+body {
+    font-family: 'Lora', serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px; /* Adjust padding for consistency */
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, var(--secondary-purple) 0%, var(--primary-purple) 100%);
+    color: var(--text-light);
+    padding: 50px 0;
+    text-align: center;
+    box-shadow: 0 5px 15px var(--shadow-medium);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 70%);
+    transform: rotate(45deg);
+    opacity: 0.3;
+    animation: subtle-glow 15s infinite alternate;
+}
+
+@keyframes subtle-glow {
+    from { transform: rotate(0deg) scale(1); opacity: 0.3; }
+    to { transform: rotate(360deg) scale(1.1); opacity: 0.4; }
+}
+
+header h1 {
+    font-family: 'Gochi Hand', cursive;
+    font-size: 4em;
+    margin: 0;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
+}
+
+header p {
+    font-size: 1.3em;
+    margin-top: 10px;
+    opacity: 0.95;
+    position: relative;
+    z-index: 1;
+}
+
+header nav {
+    margin-top: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+header nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+header nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: var(--accent-pink);
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+header nav a:hover::after {
+    width: 100%;
+}
+
+header nav a:hover {
+    color: var(--accent-pink);
+    transform: translateY(-2px);
+}
+
+.search-container {
+    margin-top: 25px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+}
+
+#search-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--text-dark);
+    font-size: 1.1em;
+    box-shadow: 0 4px 10px var(--shadow-medium);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#search-input::placeholder {
+    color: #888;
+}
+
+#search-input:focus {
+    background-color: var(--text-light);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Main Layout */
+main {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    gap: 40px; /* Increased gap for better spacing */
+    padding: 40px 20px;
+    justify-content: center; /* Center content when wrapped */
+}
+
+.blog-posts {
+    flex: 3;
+    min-width: 300px; /* Ensure posts don't get too narrow */
+}
+
+.sidebar {
+    flex: 1;
+    min-width: 250px; /* Ensure sidebar doesn't get too narrow */
+    background-color: var(--text-light);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px var(--shadow-medium);
+    align-self: flex-start; /* Stick to the top */
+    border: 1px solid var(--border-color);
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+}
+
+.sidebar h2 {
+    font-family: 'Gochi Hand', cursive;
+    color: var(--secondary-purple);
+    margin-top: 0;
+    border-bottom: 3px solid var(--accent-pink); /* Flashier border */
+    padding-bottom: 12px;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Blog Post Card */
+.post {
+    background-color: var(--text-light);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px var(--shadow-medium);
+    margin-bottom: 40px;
+    padding: 30px;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    position: relative;
+}
+
+.post::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(var(--primary-purple), 0.05), rgba(var(--accent-pink), 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.post:hover::before {
+    opacity: 1;
+}
+
+.post:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+.post-title {
+    font-family: 'Gochi Hand', cursive;
+    color: var(--secondary-purple);
+    font-size: 2.5em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.post-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.post-title a:hover {
+    color: var(--primary-purple);
+    text-decoration: underline;
+}
+
+.post-meta {
+    font-size: 0.95em;
+    color: #777;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.post-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.post-image:hover {
+    transform: scale(1.02);
+}
+
+.post-content p {
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 1;
+}
+
+.read-more {
+    display: inline-block;
+    background: linear-gradient(45deg, var(--primary-purple) 0%, var(--accent-pink) 100%);
+    color: var(--text-light);
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.read-more::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.2);
+    transform: skewX(-30deg);
+    transition: all 0.4s ease;
+}
+
+.read-more:hover::before {
+    left: 100%;
+}
+
+.read-more:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* Tags */
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.tag-button {
+    background: linear-gradient(45deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);
+    color: var(--text-light);
+    padding: 8px 16px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.tag-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.2);
+    transform: skewX(-30deg);
+    transition: all 0.4s ease;
+}
+
+.tag-button:hover::before {
+    left: 100%;
+}
+
+.tag-button:hover {
+    background: linear-gradient(45deg, var(--accent-pink) 0%, var(--primary-purple) 100%);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+.tag-button.active {
+    background: linear-gradient(45deg, var(--accent-pink) 0%, var(--secondary-purple) 100%);
+    box-shadow: 0 0 0 3px var(--accent-pink), 0 0 15px var(--accent-pink);
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);
+    color: var(--text-light);
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 50px;
+    box-shadow: 0 -5px 15px var(--shadow-medium);
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 10%, transparent 70%);
+    transform: rotate(-45deg);
+    opacity: 0.2;
+    animation: subtle-glow-reverse 18s infinite alternate;
+}
+
+@keyframes subtle-glow-reverse {
+    from { transform: rotate(0deg) scale(1); opacity: 0.2; }
+    to { transform: rotate(-360deg) scale(1.1); opacity: 0.3; }
+}
+
+footer p {
+    margin: 0;
+    font-size: 1em;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+}
+
+/* Full Post Page Styling (for about.html, contact.html, and individual posts) */
+.full-post {
+    background-color: var(--text-light);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px var(--shadow-medium);
+    margin-bottom: 40px;
+    padding: 30px;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    position: relative;
+}
+
+.full-post h1.post-title {
+    font-family: 'Gochi Hand', cursive;
+    color: var(--secondary-purple);
+    font-size: 3.5em;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    border-bottom: 3px solid var(--accent-pink);
+    padding-bottom: 10px;
+}
+
+.full-post h2 {
+    font-family: 'Gochi Hand', cursive;
+    color: var(--secondary-purple);
+    font-size: 2.8em;
+    margin-top: 40px; /* Add space above the subtitle */
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+}
+
+.full-post p {
+    font-size: 1.4em;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.full-post ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.full-post ul li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.full-post ul li::before {
+    content: '\2022'; /* Bullet point */
+    color: var(--primary-purple);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    position: absolute;
+    left: 0;
+}
+
+.full-post a {
+    color: var(--primary-purple);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.full-post a:hover {
+    color: var(--accent-pink);
+    text-decoration: underline;
+}
+
+.post-image-full,
+.post-image-inline {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: block; /* Ensure images are block-level for proper scaling */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Advanced Post Elements */
+.table-container {
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.custom-table th, .custom-table td {
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.custom-table thead {
+    background-color: var(--secondary-purple);
+    color: var(--text-light);
+}
+
+.custom-table tbody tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+.code-block-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.code-block-container pre {
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--primary-purple);
+    color: var(--text-light);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.mermaid {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.custom-blockquote {
+    border-left: 5px solid var(--primary-purple);
+    padding-left: 20px;
+    margin: 20px 0;
+    font-style: italic;
+}
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.image-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.simple-image-container {
+    margin-bottom: 20px;
+}
+
+.simple-image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column; /* Stack columns on smaller screens */
+        padding: 20px;
+    }
+
+    .blog-posts, .sidebar {
+        flex: none; /* Remove flex sizing */
+        width: 100%; /* Take full width */
+        min-width: auto; /* Allow sidebar to shrink */
+    }
+
+    header h1 {
+        font-size: 3em;
+    }
+
+    header p {
+        font-size: 1.1em;
+    }
+
+    header nav a {
+        margin: 0 10px;
+        font-size: 1em;
+    }
+
+    .post-title {
+        font-size: 2em;
+    }
+
+    #search-input {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2.5em;
+    }
+
+    header p {
+        font-size: 1em;
+    }
+
+    header nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    header nav a {
+        margin: 5px 0;
+    }
+
+    .post {
+        padding: 20px;
+    }
+
+    .post-title {
+        font-size: 1.8em;
+    }
+
+    .read-more {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    .tag-button {
+        padding: 6px 12px;
+        font-size: 0.85em;
+    }
+
+    .sidebar {
+        padding: 15px;
+    }
+
+    .tag-list {
+        gap: 5px;
+    }
+}
